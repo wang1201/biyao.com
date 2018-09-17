@@ -1,0 +1,171 @@
+<script id="indexCategoryInfoOne" type="text/html">
+	<!--banner下面的三个图-->
+	<div class="categoryInfo1">
+		<div class="threeImg">
+			<ul class="clearfix threeImgInfo">
+				<%for(let i = 0; i<listImg.length;i++){%>
+				<li>
+					<a href="#"><img src="<%=listImg[i].pcImageUrl%>" /></a>
+				</li>
+
+				<%}%>
+			</ul>
+
+		</div>
+		<div class="category-recommend">
+			<div class="category-title">
+				<p>
+					<%=featuredTile%>
+				</p>
+			</div>
+			<div id="accordion">
+				<ul class="accInfo">
+					<%for(let i = 0;i<featuredItems.length;i++){%>
+					<li>
+						<i></i>
+						<img src="<%=featuredItems[i].pcImageUrl%>" />
+					</li>
+					<%}%>
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>
+	<%for(let i = 0; i<contentData.length;i++){%>
+	<div class="categoryInfo">
+		<div class="category-title">
+			<p>
+				<%=contentData[i].title%>
+			</p>
+			<a href="#">查看全部 ></a>
+		</div>
+		<ul class="category-list">
+
+			<li class="category-brand template">
+				<a href="#">
+					<i><img src="<%=contentData[i].moduleImage%>" alt=""></i>
+					<span><%=contentData[i].manufacturers%>&emsp;<%=contentData[i].moduleBrand%></span>
+				</a>
+			</li>
+			<%for(let j = 0; j<contentData[i].moduleItems.length;j++){%>
+			<li class="category-brand">
+				<a href="#">
+					<i><img src="<%=contentData[i].moduleItems[j].image%>" alt=""></i>
+					<dl>
+						<dt><%=contentData[i].moduleItems[j].ext.itemName%></dt>
+						<dd>¥
+							<%=contentData[i].moduleItems[j].ext.itemPrice%>
+						</dd>
+					</dl>
+				</a>
+			</li>
+			<%}%>
+
+		</ul>
+
+	</div>
+	<%}%>
+
+</script>
+<script id="indexCategoryInfoTwo" type="text/html">
+	<%for(let i = 0; i<contentData.length;i++){%>
+	<div class="categoryInfo">
+		<div class="category-title">
+			<p>
+				<%=contentData[i].title%>
+			</p>
+			<a href="#">查看全部 ></a>
+		</div>
+		<ul class="category-list">
+
+			<li class="category-brand template">
+				<a href="#">
+					<i><img src="<%=contentData[i].moduleImage%>" alt=""></i>
+					<span><%=contentData[i].manufacturers%>&emsp;<%=contentData[i].moduleBrand%></span>
+				</a>
+			</li>
+			<%for(let j = 0; j<contentData[i].moduleItems.length;j++){%>
+			<li class="category-brand">
+				<a href="#">
+					<i><img src="<%=contentData[i].moduleItems[j].image%>" alt=""></i>
+					<dl>
+						<dt><%=contentData[i].moduleItems[j].ext.itemName%></dt>
+						<dd>¥
+							<%=contentData[i].moduleItems[j].ext.itemPrice%>
+						</dd>
+					</dl>
+				</a>
+			</li>
+			<%}%>
+
+		</ul>
+
+	</div>
+	<%}%>
+</script>
+<script id="indexCategoryInfoThree" type="text/html">
+	<%for(let i = 0; i<DataOne.length;i++){%>
+	<div class="categoryInfo">
+		<div class="category-title">
+			<p>
+				<%=DataOne[i].title%>
+			</p>
+			<a href="#">查看全部 ></a>
+		</div>
+		<ul class="category-list">
+
+			<li class="category-brand template">
+				<a href="#">
+					<i><img src="<%=DataOne[i].moduleImage%>" alt=""></i>
+					<span><%=DataOne[i].manufacturers%>&emsp;<%=DataOne[i].moduleBrand%></span>
+				</a>
+			</li>
+			<%for(let j = 0; j<DataOne[i].moduleItems.length;j++){%>
+			<li class="category-brand">
+				<a href="#">
+					<i><img src="<%=DataOne[i].moduleItems[j].image%>" alt=""></i>
+					<dl>
+						<dt><%=DataOne[i].moduleItems[j].ext.itemName%></dt>
+						<dd>¥
+							<%=DataOne[i].moduleItems[j].ext.itemPrice%>
+						</dd>
+					</dl>
+				</a>
+			</li>
+			<%}%>
+
+		</ul>
+
+	</div>
+	<%}%>
+	
+	<%for(let i = 0; i<DataTwo.length;i++){%>
+	<div class="categoryInfo">
+		<div class="category-title">
+			<p>
+				<%=DataTwo[i].moduleTitle%>
+			</p>
+			<a href="#">查看全部 ></a>
+		</div>
+		<ul class="category-list">
+			<%for(let j = 0; j<DataTwo[i].moduleItems.length;j++){%>
+			<li class="category-brand specalList">
+				<a href="#">
+					<i><img src="<%=DataTwo[i].moduleItems[j].imageUrl%>" alt=""></i>
+					<dl>
+						<dt><%=DataTwo[i].moduleItems[j].itemName%></dt>
+						<dd>¥
+							<%=DataTwo[i].moduleItems[j].itemPrice%>
+						</dd>
+					</dl>
+				</a>
+			</li>
+			<%}%>
+
+		</ul>
+
+	</div>
+	<%}%>
+</script>

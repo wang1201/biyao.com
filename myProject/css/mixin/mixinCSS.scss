@@ -1,0 +1,48 @@
+@import "mixinFunction";
+
+$zero:0px; //0px
+$precent:100%; //百分比
+$select-color:#f7b200; //选中的黄色
+$font:12px "Microsoft YaHei","微软雅黑","宋体",Arial,Helvetica,sans-serif;
+$hover-shadow:0 1px 10px 4px rgba(0, 0, 0, .05); //选中时的阴影
+html,
+body {
+    padding: $zero;
+    margin: $zero;
+    height: $precent;
+    width: $precent;
+    min-width: 330px;
+}
+
+body {
+    background: #f9f9f9;
+    font: $font;
+}
+
+.header {
+    background: black(20);
+}
+
+
+/*======万能Float闭合======*/
+
+@mixin clearFix {
+    &::after {
+        content: '';
+        height: 0;
+        display: block;
+        clear: both;
+        overflow: hidden;
+    }
+}
+
+.clear {
+    @include clearFix
+}
+
+a{
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: none;
+}

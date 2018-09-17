@@ -1,0 +1,182 @@
+.hide {
+    display: none
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
+}
+
+.clearfix {
+    *zoom: 1
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+.subpage .prosul {
+    display: none
+}
+//左侧菜单
+.prosul {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 0;
+    width: 207px;
+    _overflow: hidden;
+    height: 360px;
+    position: absolute;
+    z-index: 10;
+    .list {
+        line-height: 34px;
+        height: 34px;
+        _overflow: hidden;
+        margin-right: 0px;
+        padding: 0px 21px;
+        text-align: justify;
+        &.prosahover {
+            background-color: rgba(255, 255, 255, .2);
+        }
+        a.title {
+            padding-right: 8px;
+            _padding-right: 6px;
+            white-space: nowrap;
+            display: inline-block;
+            height: 30px;
+            font-size: 14px;
+            color: #fff
+        }
+        a:hover {
+            color: #f7b200
+        }
+        span {
+            margin: 0 5px;
+            font-size: 16px;
+            color: #fff;
+        }
+        //ul右边二级
+        .prosmore {
+            padding: 10px 0;
+            position: absolute;
+            z-index: 999;
+            left: 208px;
+            top: 0px;
+            text-align: left;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 1px 0 15px 5px rgba(0, 0, 0, .05);
+            em {
+                font-weight: 400;
+                padding-top: 9px;
+                display: inline-block
+            }
+            .prosmore-ul {
+                min-width: 520px;
+                min-height: 320px;
+                .nav-sub {
+                    line-height: 34px;
+                    height: auto;
+                    padding: 0;
+                    &>a {
+                        display: inline-block;
+                        width: 62px;
+                        margin: -2px 10px 0;
+                        padding: 1px 0 0 0;
+                        white-space: normal;
+                        line-height: 14px;
+                        word-break: break-all;
+                        text-align: right;
+                        font-size: 14px;
+                        color: #333;
+                        vertical-align: middle;
+                    }
+                    &>i {
+                        display: inline-block;
+                        margin-top: 10px;
+                        line-height: 14px;
+                        font-size: 14px;
+                        color: #333;
+                    }
+                    ul {
+                        float: right;
+//                      width: 590px;
+                        margin: 0;
+                        line-height: 34px;
+                        width: 80%;
+                        padding-top: 2px;
+                        border-bottom: 1px solid #f2f2f2;
+                        li {
+                            padding: 0 5px;
+                            float: left;
+                            margin: 0;
+                            a {
+                                font-size: 12px;
+                                color: gray;
+                                text-align: center;
+                                &:hover {
+                                    color: #523669;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.prosul li.nochild a:hover {
+    color: #fff
+}
+
+//轮播图
+$left-Img:"http://static.biyao.com/pc/common/img/master/slider-left.png?v=biyao_0218904";
+#myCarousel {
+    height: 360px;
+    .carousel-control {
+        width: 6%;
+        display: none;
+        .glyphicon-chevron-left:before,
+        .glyphicon-chevron-right:before {
+            border-radius: 4px;
+            padding: 3px 4px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        &.right,
+        &.left {
+            //pointer-events: none;
+            background: none;
+        }
+    }
+    @media (min-width: 768px) {
+        .carousel-control.left {
+            margin-left: 207px;
+        }
+    }
+    .carousel-inner .item img {
+        height: 360px;
+    }
+    .carousel-indicators {
+        padding-left: 207px;
+        li {
+            width: 13px;
+            height: 13px;
+            margin: 0 6px;
+            border: 2px solid #523669;
+        }
+        .active {
+            background: #f7b200;
+            border: 2px solid #f7b200;
+        }
+    }
+    @media (max-width: 768px) {
+        .carousel-indicators {
+            padding-left: 0px;
+        }
+    }
+}
