@@ -11,6 +11,9 @@ let gulpJson = require('gulp-jsonminify');
 
 let gulpImg = require('gulp-imagemin');
 
+let express = require("express");
+
+let https = require("https");
 //定义一个名字叫做‘build’的任务
 gulp.task('build', () => {
 	//压缩并复制js
@@ -37,7 +40,7 @@ gulp.task('build', () => {
 	gulp.src('./myProject/**/*.json')
 		.pipe(gulpJson())
 		.pipe(gulp.dest('./clone'));
-		
+
 	gulp.src('./myProject/img/*')
 		.pipe(gulpImg())
 		.pipe(gulp.dest('./clone/img'));
@@ -50,12 +53,12 @@ gulp.task('refreshHtml', () => {
 		.pipe(connect.reload()) //更新
 })
 gulp.task('refreshJS', () => {
-	gulp.src('./myProject/**/*.js') 
+	gulp.src('./myProject/**/*.js')
 		.pipe(minifyJS())
-		.pipe(gulp.dest('./clone')) 
+		.pipe(gulp.dest('./clone'))
 })
 gulp.task('refreshCSS', () => {
-	gulp.src('./myProject/**/*.scss') 
+	gulp.src('./myProject/**/*.scss')
 		.pipe(sass({
 			outputStyle: "expanded"
 		}).on('error', sass.logError)) //错误处理
@@ -68,16 +71,54 @@ gulp.task('refreshCSS', () => {
 })
 
 gulp.task('refreshJSON', () => {
-	gulp.src('./myProject/**/*.json') 
-		.pipe(gulpJson()) 
-		.pipe(gulp.dest('./clone')) 
+	gulp.src('./myProject/**/*.json')
+		.pipe(gulpJson())
+		.pipe(gulp.dest('./clone'))
 })
 
 gulp.task('refreshImg', () => {
 	gulp.src('./myProject/img/*')
 		.pipe(gulpImg())
-		.pipe(gulp.dest('./clone/img')); 
+		.pipe(gulp.dest('./clone/img'));
 })
+
+//创建代理服务器
+//gulp.task("proxyserver", ()=>{
+//	var app = express();
+//	app.use(express.static('./clone'));
+//	//请求http://localhost:8080/biyao.com/products/getComment/proxy?platform=pc
+//	app.use("/proxy", function(req, res) {
+//		let proxy = https.request({
+//			hostname: "biyao.com",
+//			path: "/products/getComment",
+//			method: "POST",
+//			livereload: true
+//		}, (response) => {
+//			response.pipe(res);
+//		});
+//		proxy.on("error", (e) => {
+//			console.error(`请求遇到问题:${e.message}`);
+//		});
+//		proxy.end();
+//	});
+//	var server = app.listen(9091, function() {
+//		var host = server.address().address;
+//		var port = server.address().port;
+//	});
+//
+//	//监听所有文件的变化，执行相应的任务
+//	gulp.watch('./myProject/**/*.html', ['refreshHtml']);
+//	gulp.watch('./myProject/**/*.scss', ['refreshCSS', 'refreshHtml']);
+//	gulp.watch('./myProject/**/*.css', ['refreshCSS', 'refreshHtml'])
+//	gulp.watch('./myProject/**/*.js', ['refreshJS', 'refreshHtml']);
+//	gulp.watch('./myProject/**/*.json', ['refreshJSON']);
+//	gulp.watch('./myProject/img/*', ['refreshImg', 'refreshHtml'])
+//})
+
+
+
+
+
 
 
 gulp.task('webserver', () => {
@@ -96,12 +137,12 @@ gulp.task('webserver', () => {
 			livereload: true,
 			directoryListing: true,
 			open: true,
-			//	      	middleware: function (connect, opt) {
-			//		      var Proxy = require('gulp-connect-proxy');
-			//		      opt.route = '/proxy';
-			//		      var proxy = new Proxy(opt);
-			//		      return [proxy];
-			//		    }
+			//			middleware: function(connect, opt) {
+			//				var Proxy = require('gulp-connect-proxy');
+			//				opt.route = '/proxy';
+			//				var proxy = new Proxy(opt);
+			//				return [proxy];
+			//			}
 		}));
 	//也就是说运行的时候，直接localhost://9091/login.html就是指的clone下的login
 	//监听所有文件的变化，执行相应的任务
@@ -109,6 +150,6 @@ gulp.task('webserver', () => {
 	gulp.watch('./myProject/**/*.scss', ['refreshCSS', 'refreshHtml']);
 	gulp.watch('./myProject/**/*.css', ['refreshCSS', 'refreshHtml'])
 	gulp.watch('./myProject/**/*.js', ['refreshJS', 'refreshHtml']);
-	gulp.watch('./myProject/**/*.json',['refreshJSON']);
-	gulp.watch('./myProject/img/*',['refreshImg','refreshHtml'])
+	gulp.watch('./myProject/**/*.json', ['refreshJSON']);
+	gulp.watch('./myProject/img/*', ['refreshImg', 'refreshHtml'])
 })

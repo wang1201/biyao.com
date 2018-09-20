@@ -1,0 +1,405 @@
+<script id="produceDetail" type="text/html">
+	<div class="section-bread">
+		<a href="index.html">首页</a>
+		<span class="bread-title">&gt;&nbsp;{{hierarchy.firstName}}&gt;&nbsp;{{hierarchy.secondName}}&gt;&nbsp;{{hierarchy.thirdName}}&gt;&nbsp;{{hierarchy.brandName}}&gt;&nbsp;{{hierarchy.productNameCN}}</span>
+	</div>
+	<div class="section-editor clearfix row">
+		<div class="editor-main col-xs-6">
+			<div class="editor-picture clearfix">
+				<p>
+					<img src="{{produceInfo.currentSkuImagePath}}640x640.jpg">
+				</p>
+				<ul>
+					<li class="main-active">
+						<%if(produceTel.currentSkuImagePath !=null){%>
+						<img src="{{produceTel.currentSkuImagePath}}50x50.jpg">
+						<%}%>
+
+					</li>
+					<li><img class="mainImg" src="" onerror="nofind($(this));"></li>
+					<li><img class="mainImg" src="" onerror="nofind($(this));"></li>
+					<li><img class="mainImg" src="" onerror="nofind($(this));"></li>
+					<li><img class="mainImg" src="" onerror="nofind($(this));"></li>
+				</ul>
+			</div>
+			<ul class="editor-policy clearfix row">
+
+				<li>
+					<span>7天无忧退货</span>
+					<div><i></i>根据国家七天无理由退货规范，为您办理退货退款，具体退货政策见商品详情页。</div>
+				</li>
+
+				<li>
+					<span>先行赔付</span>
+					<div><i></i>争议可申诉，申诉成功，立即退款。</div>
+				</li>
+
+				<li>
+					<span>超时赔偿</span>
+					<div><i></i>未按承诺时间发货，系统自动赔付（赔款金额为订单商品金额的30%，上限500元）。</div>
+				</li>
+
+				<li>
+					<span>顺丰包邮</span>
+					<div><i></i>运费由商家承担</div>
+				</li>
+
+			</ul>
+		</div>
+		<div class="editor-panel sku col-xs-6">
+			<div class="panel-top">
+				<h1>{{produceInfo.productCN}}</h1>
+				<span>{{produceInfo.productEN}}</span>
+				<!--<p>轻薄透气吸湿 柔软不掉毛</p>-->
+
+				<span class="manufacturer">
+					<%for(let i = 0; i<produceInfo.tagsList.length;i++){%>
+						<%=produceInfo.tagsList[i].tagValue%>
+					<%}%>
+				</span>
+
+			</div>
+			<ul class="panel-main">
+				<li class="panel-press row">
+					<span class="col-xs-3 rowTitle">价格</span>
+					<div class="col-xs-9">
+						<span class="panel-maney">￥<i>{{produceTel.currentSkuOfferPrice}}</i></span>
+					</div>
+				</li>
+				<%for(let i = 0; i<gift.length;i++){%>
+				<li class="row">
+					<span class="col-xs-3 rowTitle">活动</span>
+					<div class="mainList col-xs-9">
+						<p><span class="type"><%=gift[i].tag%></span>
+							<%=gift[i].desc%>
+						</p>
+					</div>
+				</li>
+
+				<%}%>
+				<li class="row">
+					<span class="col-xs-3 rowTitle">规格</span>
+					<div class="mainList col-xs-9">
+						<span class="size activeStyle">200ml</span>
+						<span class="size">400ml</span>
+					</div>
+				</li>
+
+			</ul>
+			<div class="panel-footer">
+				<div class="input-group">
+					<span class="input-group-addon input-sm subtr">-</span>
+					<input type="text" class="form-control inputNum" value="1">
+					<span class="input-group-addon input-sm add">+</span>
+				</div>
+				<div class="addCartButton yes">
+					<a id="addCart">加入购物车<span class="icon glyphicon glyphicon-shopping-cart"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section-view">
+		<div class="view-title clearfix">
+			<ul class="clearfix">
+				<li>猜你喜欢</li>
+				<li class="view-active active" id="detail">商品信息<i></i></li>
+				<li id="evaluate">评价详情 172<i></i></li>
+			</ul>
+		</div>
+		<div class="view-section clearfix">
+			<div class="view-supplier">
+				<ul class="supplier-recommen">
+					<%for(let i in leftId){%>
+					<li>
+						<a href='#' index='<%=leftProduce[(leftId[i].id)][0]%>'>
+							<i><img src="<%=leftProduce[(leftId[i].id)][10]%>"></i>
+							<div class="supplier">
+								<%=leftProduce[(leftId[i].id)][11]%>
+							</div>
+							<div class="title">
+								<%=leftProduce[(leftId[i].id)][1]%>
+							</div>
+							<div class="priceBox">
+								<span>￥</span>
+								<%=leftProduce[(leftId[i].id)][6]%>
+							</div>
+						</a>
+					</li>
+					<% } %>
+
+				</ul>
+
+			</div>
+			<div class="view-main clearfix">
+				<div class="view-detail">
+					<div class="wrap">
+						<div class="imgText-property">
+							<dl>
+								<dt>名称</dt>
+								<dd>
+									{{produceInfo.productCN}}
+								</dd>
+							</dl>
+							<dl>
+								<dt>英译</dt>
+								<dd>
+									{{produceInfo.productEN}}
+								</dd>
+							</dl>
+							<dl>
+								<dt>品牌</dt>
+								<dd>
+									{{produceInfo.brandCN}}
+								</dd>
+							</dl>
+							<dl>
+								<dt>英译</dt>
+								<dd>
+									{{produceInfo.brandEN}}
+
+								</dd>
+							</dl>
+						</div>
+						<div class="imgText-edit">
+							<p><img class="biyaoImg" src="{{produceInfo.currentSkuImagePath}}640x640.jpg" onerror="nofind($(this));"></p>
+							<p><img class="biyaoImg" src="" onerror="nofind($(this));"></p>
+							<p><img class="biyaoImg" src="" onerror="nofind($(this));"></p>
+							<p><img class="biyaoImg" src="" onerror="nofind($(this));"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/96/rBACW1pO9dKAVL-UAACKBWV0EYg486.jpg" title="详情页尾部说明PC_01.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/96/rBACW1pO9dKAV_8sAADkCjKWqqs451.jpg" title="详情页尾部说明PC_02.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/90/rBACYVpO9dKAevYZAAGyi-w6kcE075.jpg" title="详情页尾部说明PC_03.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/26/DF/rBACVFpO9dKAN1G1AAAjxNlfqNs412.jpg" title="详情页尾部说明PC_04.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/26/DF/rBACVFpO9dKAGsXEAACrwf4yqqo997.jpg" title="详情页尾部说明PC_05.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/96/rBACW1pO9dKAa1h6AAC9MWxZeeE022.jpg" title="详情页尾部说明PC_06.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/90/rBACYVpO9dKACS7rAABz7KoqCwI646.jpg" title="详情页尾部说明PC_07.jpg"></p>
+						</div>
+					</div>
+				</div>
+				<div class="view-evaluate">
+					<div class="eval-select clearfix">
+						<p>商品满意度：<i id="evalScore">4.9分</i></p>
+					</div>
+					<ul class="eval-list">
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/29/6D/rBACW1pYYF-ATaVYAAAHAbBFMls373.png"></dt>
+								<dd>2***g</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">毛巾比较软，但是比图片所展示要薄一些。先用用看</p>
+								<p class="eval-time"><span>2018-04-18 13:36&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/53/46/rBACVFuNMSWAHWj0AABi2cQ284k251.png"></dt>
+								<dd>表***5</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">质量不错。觉得簿了一点</p>
+								<p class="eval-time"><span>2018-09-18 14:24&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+								<dl class="eval-sup"><dt>[ 商家回复 ]</dt>
+									<dd>尊敬的顾客，您好。日式系列毛巾系列属于薄款低捻产品，由100%新疆长绒棉制成，建议您使用前充分漂洗2-3次，去掉巾类产品生产中的浮毛。祝您生活愉快。</dd>
+								</dl>
+							</div>
+							<div class="v-icon v0"></div>
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/54/3C/rBACYVuJUWiAITKBAAAU6qZFlcQ519.png"></dt>
+								<dd>b***P</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">质量非常好！</p>
+								<p class="eval-time"><span>2018-09-14 15:36&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/4E/95/rBACVFt_g8qAZxEwAAAKSo4Sp7A037.png"></dt>
+								<dd>b***0</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">有点薄，质量还可以</p>
+								<p class="eval-time"><span>2018-09-14 12:07&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+								<dl class="eval-sup"><dt>[ 商家回复 ]</dt>
+									<dd>尊敬的顾客，您好。日式系列毛巾系列属于薄款低捻产品，由100%新疆长绒棉制成，建议您使用前充分漂洗2-3次，去掉巾类产品生产中的浮毛。加之最近空气湿度高，请务必在使用前漂洗并充分晾干。祝您生活愉快。</dd>
+								</dl>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/04/61/rBACVFkX32iAOfz0AAANDAmfhFw561.png"></dt>
+								<dd>云***8</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">很好</p>
+								<p class="eval-time"><span>2018-09-13 10:39&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/29/65/rBACYVpYYGeAd-MCAAAKFIHTVBs742.png"></dt>
+								<dd>b***7</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">触感挺好的</p>
+								<p class="eval-time"><span>2018-09-13 09:55&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/44/75/rBACVFtR_xiAcc8WAAAKkS3pmg4051.png"></dt>
+								<dd>哦***葱</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">还行，是方巾</p>
+								<p class="eval-time"><span>2018-09-08 16:10&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/4B/A7/rBACW1ttvLmAFKk9AAAFLcn6L6w468.png"></dt>
+								<dd>b***z</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">特别吸水，小巧方便，洗脸正好</p>
+								<p class="eval-time"><span>2018-09-03 10:58&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/08/75/rBACYVkYBuqAZQfnAAAM6--oK4Q787.jpg"></dt>
+								<dd>风***贵</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">一直都是用的这款</p>
+								<p class="eval-time"><span>2018-09-01 22:34&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+								<dl class="eval-sup"><dt>[ 商家回复 ]</dt>
+									<dd>尊敬的顾客，您的信任和支持是我们前进的最大动力，谢谢！</dd>
+								</dl>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/2D/B7/rBACVFqfPN2AKaSYAAdMD_WILqQ656_150x150.jpg"></dt>
+								<dd>我***骨</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">一白一粉色彩亮点，用藏色的掉色，相信必要质量洗了两次就清水了，毛巾软，舒服</p>
+								<p class="eval-time"><span>2018-08-31 15:30&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/3E/32/rBACYVsn0JOAQzcyAAJLKyjGTRE898_150x150.jpg"></dt>
+								<dd>你***丝</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">刚拿到很快就可以洗水，可能没有添加乱七八糟的东西，可是就是太薄了，真的很薄</p>
+								<p class="eval-time"><span>2018-08-31 07:24&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+								<dl class="eval-sup"><dt>[ 商家回复 ]</dt>
+									<dd>尊敬的顾客，您好。日式系列毛巾均属于薄款巾类产品，毛巾类产品建议您使用前充分漂洗2-3次，去掉巾类产品生产中的浮毛，并一定避免机洗和强力脱水，充分晾干后再使用。祝您生活愉快。</dd>
+								</dl>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/2A/71/rBACVFpxYxOASesmAABGDyLOEDk665.png"></dt>
+								<dd>b***d</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">好评</p>
+								<p class="eval-time"><span>2018-08-28 21:35&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/4F/35/rBACW1t7bkaAN1VkAAMYSSxeRog792_150x150.jpg"></dt>
+								<dd>饶***尧</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">很软不错！</p>
+								<p class="eval-time"><span>2018-08-26 10:15&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/4D/F2/rBACW1t1caSAMJlYAAAP8fxfIkE291.png"></dt>
+								<dd>吉***珍</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">好用</p>
+								<p class="eval-time"><span>2018-08-23 01:38&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/29/65/rBACYVpYYGeAd-MCAAAKFIHTVBs742.png"></dt>
+								<dd>b***6</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">棒棒哒</p>
+								<p class="eval-time"><span>2018-08-22 12:15&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/06/82/rBACVFkYA6mAFi94AAAUewiqR8c480.jpg"></dt>
+								<dd>b***5</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">真心不错 要是能再大点点就更完美了</p>
+								<p class="eval-time"><span>2018-08-21 19:21&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/2A/71/rBACVFpxYs6AdIREAABTZrl0UoI813.png"></dt>
+								<dd>爱***以</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">还没用，用后再说</p>
+								<p class="eval-time"><span>2018-08-11 06:25&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/29/65/rBACYVpYYHGATNFiAAAHE23FPwo925.png"></dt>
+								<dd>金***9</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">很好</p>
+								<p class="eval-time"><span>2018-08-07 21:59&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/11/05/rBACYVkf60SAfD21AAb0qgCOHxg616_150x150.jpg"></dt>
+								<dd>M***n</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">好</p>
+								<p class="eval-time"><span>2018-08-07 04:11&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+								<dl class="eval-reply"><dt>用户1天后追评：</dt>
+									<dd>毛巾柔软，颜色好看。</dd>
+								</dl>
+							</div>
+
+						</li>
+						<li>
+							<dl class="eval-user"><dt><img src="http://bfs.biyao.com/group1/M00/29/6D/rBACW1pYYF-ATaVYAAAHAbBFMls373.png"></dt>
+								<dd>松***泉</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">很柔软，好。</p>
+								<p class="eval-time"><span>2018-08-06 19:08&nbsp;&nbsp;</span><span>颜色: 五色套装</span></p>
+							</div>
+
+						</li>
+					</ul>
+					<div class="moreModule"><span class="more">下拉加载更多</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</script>

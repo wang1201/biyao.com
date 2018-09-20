@@ -163,6 +163,7 @@ $left-Img:"http://static.biyao.com/pc/common/img/master/slider-left.png?v=biyao_
     }
     .carousel-indicators {
         padding-left: 207px;
+        z-index: 8;
         li {
             width: 13px;
             height: 13px;

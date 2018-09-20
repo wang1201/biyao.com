@@ -44,6 +44,8 @@ $shopCart-Img:'http://static.biyao.com/pc/common/img/master/shopCar.png?v=biyao_
                 font-size: 12px;
                 padding-top: 4px;
                 padding-bottom: 4px;
+                padding-left: 11px;
+                padding-right: 11px;
             }
             .navbar-toggle {
                 padding: 4px 5px;
@@ -63,9 +65,11 @@ $shopCart-Img:'http://static.biyao.com/pc/common/img/master/shopCar.png?v=biyao_
                         top: 0px;
                     }
                     .glyphicon-envelope:before {
-                        font-size: 16px;
+                        font-size: 15px;
                         padding-right: 10px;
                         content: "\2709";
+                        display: inline-block;
+                        height: 17px;
                         vertical-align: middle;
                     }
                     span.nav-num {
@@ -185,7 +189,7 @@ $up-Img:'http://static4.biyao.com/pc/common/img/master/comSprite.png?v=biyao_d19
 }
 
 //logo及搜索框
-$logo-Img:'http://static1.biyao.com/pc/common/img/master/logo.png?v=biyao_e06b35d';
+$logo-Img:'/img/pages/index/logo.png';
 $serch-Img:'http://static.biyao.com/pc/common/img/master/search.png?v=biyao_2e92562';
 .container .header .row {
     background: #FFFFFF;
@@ -267,7 +271,7 @@ $serch-Img:'http://static.biyao.com/pc/common/img/master/search.png?v=biyao_2e92
 //底部footer
 $wxCode-triangle:'http://static3.biyao.com/pc/common/img/master/left-triangle.png?v=biyao_42e3a81';
 $wxCode-img:'http://static.biyao.com/pc/common/img/master/wxCode.jpg?v=biyao_79ba7c9';
-.footer {
+.common-footer {
     margin-top: 60px;
     background: #FFFFFF;
     padding-bottom: 10px;

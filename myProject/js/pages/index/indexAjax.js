@@ -1,68 +1,11 @@
 require(['../../config/config'], function() {
-	require(['jquery', 'templates', 'bootstrap'], function($, templates) {
+	require(['jquery', 'templates', 'bootstrap','commonAjax'], function($, templates) {
+		//index
 		//热搜词
-		$.ajax({
-			url: "http://www.biyao.com/classify/hotWord",
-			dataType: "jsonp",
-			success: function(data) {
-				$('.common-header').load('../../pages/templates/common/headerTemp.html', function() {
-					let htmlStr = templates('indexTemp', {
-						hotWordList: data.data.hotwords,
-						defaultWord: data.data.defaultWord,
-					})
-					$(this).html(htmlStr);
-					//搜索框自动填充
-					var oInput = document.getElementById('serchInput');
-					var droplist = document.getElementById('droplist');
-					$(oInput).on('input', function() {
-						var script = document.createElement('script');
-						script.src = `https://suggest.taobao.com/sug?code=utf-8&q=${this.value}&callback=cb`;
-						//回调填充内容
-						document.body.appendChild(script);
-					})
-				});
-				$('.display').load('../../pages/templates/common/headerTemp.html', function() {
-					let htmlStr2 = templates('navDisplayBar', {
-						hotWordList: data.data.hotwords,
-						defaultWord: data.data.defaultWord,
-					})
-					$(this).html(htmlStr2);
-					require(['leftSideBar']);
-					$('.leftBar dl').hover(
-						function() {
-							$(this).find('.dispalyProsul').show(); // 开始淡入
-						},
-						function() {
-							$(this).find('.dispalyProsul').hide();
-						}
-					)
-					// 滑动滚动条超过第一个屏的高度时显示的导航
-					$(window).scroll(function() {
-						// 滚动条距离顶部的距离 大于 200px时
-						let screenHeight = document.body.clientWidth;
-						console.log(screenHeight);
-						if($(window).scrollTop() >= 300) {
-							$('.display').fadeIn(300);
-							//输入框点击时显示下拉列表
-							$('.rightBar input').focus(function() {
-								$(this).siblings('.rightDroplist').fadeIn(200);
-							})
-							//点击下拉列表的值，自动显示在输入框上
-							$('.rightDroplist li').on('click', function() {
-								$('.rightBar input').val($(this).text());
-								$(this).parent().hide();
-							})
-						} else {
-							$('.display').fadeOut(300);
-						}
-					});
-
-				})
-			}
-		})
+//		require(['commonAjax']);
 		//侧边栏导航
 		$.ajax({
-			url: "../../../json/pages/index/jsonDataLeftBar.json",
+			url: "/json/pages/index/jsonDataLeftBar.json",
 			type: 'get',
 			dataType: "json",
 			success: function(data) {
@@ -78,7 +21,7 @@ require(['../../config/config'], function() {
 		})
 		//中间部分,同一个json拿不同的数据(男女鞋靴之前)
 		$.ajax({
-			url: "../../../json/pages/index/jsonDataPageOne.json",
+			url: "/json/pages/index/jsonDataPageOne.json",
 			type: 'get',
 			dataType: "json",
 			success: function(data) {
@@ -100,10 +43,9 @@ require(['../../config/config'], function() {
 						content.push(attr.moduleInfo);
 					}
 				}
-				console.log(content);
 
 				//banner
-				$('#myCarousel').load('../../pages/templates/common/headerTemp.html', function() {
+				$('#myCarousel').load('/pages/templates/common/headerTemp.html', function() {
 					let htmlstrData = templates('indexbanner', {
 						list: data.data.banners
 					})
@@ -124,7 +66,7 @@ require(['../../config/config'], function() {
 				});
 
 				//contentOne
-				$('.contentOne').load('../../pages/templates/index/indexCategoryInfo.html', function() {
+				$('.contentOne').load('/pages/templates/index/indexCategoryInfo.html', function() {
 					let htmlstr01 = templates('indexCategoryInfoOne', {
 						listImg: threeImg.moduleItems,
 						featuredTile: featured.moduleTitle,
@@ -150,7 +92,7 @@ require(['../../config/config'], function() {
 		})
 		//contentTwo
 		$.ajax({
-			url: "../../../json/pages/index/jsonDataPageTwo.json",
+			url: "/json/pages/index/jsonDataPageTwo.json",
 			type: 'get',
 			dataType: "json",
 			success: function(data) {
@@ -160,7 +102,7 @@ require(['../../config/config'], function() {
 					list.push(attr.moduleInfo)
 				}
 				console.log(list);
-				$('.contentTwo').load('../../pages/templates/index/indexCategoryInfo.html', function() {
+				$('.contentTwo').load('/pages/templates/index/indexCategoryInfo.html', function() {
 					let htmlstr02 = templates('indexCategoryInfoTwo', {
 						contentData: list,
 					})
@@ -169,9 +111,9 @@ require(['../../config/config'], function() {
 				});
 			}
 		});
-		//contentTwo
+		//contentThree
 		$.ajax({
-			url: "../../../json/pages/index/jsonDataPageThree.json",
+			url: "/json/pages/index/jsonDataPageThree.json",
 			type: 'get',
 			dataType: "json",
 			success: function(data) {
@@ -188,7 +130,7 @@ require(['../../config/config'], function() {
 						infoTwo.push(attr.moduleInfo)
 					}
 				}
-				$('.contentThree').load('../../pages/templates/index/indexCategoryInfo.html', function() {
+				$('.contentThree').load('/pages/templates/index/indexCategoryInfo.html', function() {
 					let htmlstr03 = templates('indexCategoryInfoThree', {
 						DataOne: infoOne,
 						DataTwo: infoTwo
@@ -200,6 +142,7 @@ require(['../../config/config'], function() {
 		});
 
 		$(function() {
+			//index
 			/*搜索框函数《----------*/
 			window.cb = function(data) {
 				droplist.innerHTML = '';
@@ -264,9 +207,10 @@ require(['../../config/config'], function() {
 				$(this).fadeOut(500);
 				$(this).parent().next().fadeIn(500);
 			})
-			//底部footer模版
-			$('.footer').load('../../pages/templates/common/footerTemp.html');
-
+			
+			//点击a标签跳到详情
+			$('.container a').attr('href','/pages/produceDetail.html');
+			
 		})
 
 	})

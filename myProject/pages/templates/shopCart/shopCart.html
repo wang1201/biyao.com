@@ -1,0 +1,63 @@
+<script type="text/html" id="shopCart">
+	<div class="checkoutTable">
+		<input type="checkbox" class="select-all select" />
+		<ul class="checkoutHeader">
+			<li class="checkoutTableHeader checkAll">全选</li>
+			<li class="checkoutTableHeader productInfo">商品信息</li>
+			<li class="checkoutTableHeader productPrice">单价(元)</li>
+			<li class="checkoutTableHeader productNumber">数量</li>
+			<li class="checkoutTableHeader productSubtotal">小计(元)</li>
+			<li class="checkoutTableHeader control">操作</li>
+		</ul>
+		<div class="checkoutInfo">
+			<%for(let i = 0; i<data.length;i++){%>
+			<div class="Infocontent">
+				<input type="checkbox" class="select" />
+				<ul class="produce">
+					<li class="checkAll">
+						<a href="#" class="infoImg">
+							<img src="{{data[i].proImgSmall}}" />
+						</a>
+					</li>
+
+					<li class="productInfo">
+						<div>
+							<h5>{{data[i].proName}}</h5>
+							<a href="#" class="InfoproductNameCN">{{data[i].proNameEN}}</a>
+							<p>规格：<span>{{data[i].proSpecif}}</span></p>
+						</div>
+
+					</li>
+					<li class="productPrice">
+						{{data[i].proPrice}}
+					</li>
+					<li class="productNumber">
+						<div class="input-group">
+							<span class="input-group-addon input-sm subtr">-</span>
+							<input type="text" class="form-control inputNum" disabled value="{{data[i].proNum}}">
+							<span class="input-group-addon input-sm add">+</span>
+						</div>
+					</li>
+					<li class="productSum">
+						{{data[i].proSumPrice}}
+					</li>
+					<li class="pount">
+						<span></span>
+					</li>
+				</ul>
+
+			</div>
+			<%}%>
+		</div>
+
+	</div>
+	<div class="checkoutFooter row">
+		<p class="col-xs-8">
+			已选 <span class="checkNum">0</span> 件商品
+			&emsp;&emsp;商品总额 :¥<span class="checkSum">0.00</span>
+		</p>
+		<p class="col-xs-4">
+			<span class="pay">立即结算</span>
+		</p>
+	</div>
+</script>

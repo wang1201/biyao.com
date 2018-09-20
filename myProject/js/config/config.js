@@ -6,7 +6,10 @@ requirejs.config({
 		"bootstrap":"https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min",
 		"jsonp":"/js/mylib/getJSONP",
 		"templates" : '/js/mylib/template-web',
-		"leftSideBar":'/js/pages/indexLeftSideBar'
+		"leftSideBar":'/js/pages/index/indexLeftSideBar',
+		"checkForm":'/js/mylib/checkForm',
+		"getCookie":'/js/mylib/getCookie',
+		"commonAjax":'/js/pages/common/commonAjax',
 	},
 	shim:{//依赖
 		"bootstrap":{
@@ -14,6 +17,15 @@ requirejs.config({
 			//exports:"$"
 		},
 		"leftSideBar":{
+			deps:['jquery'],
+		},
+		"checkForm":{
+			deps:['jquery'],
+		},
+		"getCookie":{
+			deps:['jquery'],
+		},
+		"commonAjax":{
 			deps:['jquery'],
 		}
 	}

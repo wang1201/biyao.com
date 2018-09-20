@@ -1,0 +1,522 @@
+    .container .header .nav-tab span {
+        display: none;
+    }
+    
+    .produceInfo {
+        background: #FFFFFF;
+        margin: 5px auto 0;
+        .section-bread {
+            padding: 10px 15px;
+            a {
+                color: gray;
+            }
+            color: gray;
+        }
+        .section-editor {
+            padding-bottom: 30px;
+            padding-left: 1px;
+            .editor-main {
+                float: left;
+                .editor-picture {
+                    p {
+                        padding: 1px;
+                        position: relative;
+                        float: left;
+                        width: 82%;
+                        border: 1px solid #ccc;
+                        text-align: center;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            vertical-align: middle;
+                        }
+                    }
+                    ul {
+                        display: block;
+                        float: left;
+                        margin: auto;
+                        width: 16%;
+                        text-align: center;
+                        overflow: hidden;
+                        li {
+                            margin: 0px 0px 10px 10px;
+                            border: 1px solid #ccc;
+                            cursor: pointer;
+                            text-align: center;
+                            padding: 1px;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+                .editor-policy {
+                    display: block;
+                    margin-top: 20px;
+                    li {
+                        position: relative;
+                        float: left;
+                        margin-right: 10px;
+                        cursor: pointer;
+                        span {
+                            padding-left: 20px;
+                            color: #333;
+                            background: url(http://static3.biyao.com/pc/common/img/master/policy-icon.png?v=biyao_238b758) left center no-repeat;
+                        }
+                        div {
+                            position: absolute;
+                            top: 25px;
+                            left: -55px;
+                            z-index: 2;
+                            display: none;
+                            width: 230px;
+                            padding: 10px 15px;
+                            border-radius: 3px;
+                            box-shadow: 0 1px 10px 4px rgba(0, 0, 0, .05);
+                            background: #fff;
+                            line-height: 27px;
+                            color: #666;
+                            i {
+                                position: absolute;
+                                top: -15px;
+                                left: 80px;
+                                z-index: 1;
+                                width: 30px;
+                                height: 15px;
+                                background: url(http://static4.biyao.com/pc/common/img/master/triangle.png?v=biyao_5912cd0) no-repeat;
+                            }
+                        }
+                    }
+                }
+            }
+            .editor-panel {
+                float: left;
+                font-size: 20px;
+                padding-right: 0;
+                .panel-top {
+                    border-bottom: 1px solid #ccc;
+                    h1 {
+                        line-height: 25px;
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: #333;
+                    }
+                    span {
+                        display: block;
+                        line-height: 25px;
+                        font-size: 14px;
+                        color: #000;
+                    }
+                    p {
+                        font-size: 14px;
+                        color: #999;
+                        margin-bottom: 14px;
+                    }
+                    .manufacturer {
+                        display: inline-block;
+                        //                      height: 24px;
+                        padding: 0 10px;
+                        margin-bottom: 10px;
+                        border-radius: 2px;
+                        background-color: #F7F1E8;
+                        font-size: 12px;
+                        line-height: 24px;
+                        color: #BF9E6B;
+                    }
+                }
+                .panel-main {
+                    color: #666;
+                    li {
+                        overflow: hidden;
+                        margin-top: 15px;
+                        &.panel-press {
+                            line-height: 35px;
+                        }
+                        span.rowTitle {
+                            padding-right: 0;
+                            width: 54px;
+                            line-height: 35px;
+                            display: block;
+                            font-size: 14px;
+                        }
+                        div {
+                            padding: 0;
+                            line-height: 35px;
+                            height: 35px;
+                            span {
+                                display: inline-block;
+                                height: 35px;
+                                font-size: 14px;
+                            }
+                            .panel-maney {
+                                i {
+                                    display: inline-block;
+                                    vertical-align: -3px;
+                                    font-size: 24px;
+                                    font-style: normal;
+                                }
+                            }
+                            &.mainList {
+                                p {
+                                    color: #474747;
+                                    line-height: 35px;
+                                    font-size: 12px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    padding: 0px 3px;
+                                    span.type {
+                                        color: #e00;
+                                        line-height: 22px;
+                                        height: 22px;
+                                        border: 1px solid #e00;
+                                        letter-spacing: 1px;
+                                        margin-right: 5px;
+                                    }
+                                }
+                                span.size {
+                                    color: #333;
+                                    box-shadow: inset 0 0 0 1px #ddd;
+                                    line-height: 23px;
+                                    height: 23px;
+                                    padding: 0px 10px;
+                                    border-radius: 3px;
+                                    cursor: pointer;
+                                }
+                                .activeStyle {
+                                    box-shadow: none;
+                                    border: 1px solid #000000;
+                                    ;
+                                }
+                            }
+                        }
+                    }
+                }
+                .panel-footer {
+                    margin-top: 10px;
+                    border: none;
+                    background: none;
+                    .input-group {
+                        width: 30%;
+                        float: left;
+                        line-height: 35px;
+                        margin-left: 41px;
+                        input {
+                            text-align: center;
+                            height: 36px;
+                            padding: 0;
+                        }
+                        .input-group-addon {
+                            background-color: #efefef;
+                            cursor: pointer;
+                        }
+                    }
+                    .addCartButton {
+                        width: 50%;
+                        float: left;
+                        padding-left: 10px;
+                        a {
+                            background-color: #e00;
+                            cursor: pointer;
+                            font-size: 16px;
+                            color: #ffffff;
+                            line-height: 36px;
+                            display: block;
+                            width: 90%;
+                            border-radius: 3px;
+                            text-align: center;
+                            span {
+                                padding-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .section-view {
+            position: relative;
+            margin-top: 40px;
+            padding-top: 60px;
+            .clearfix {
+                display: block;
+            }
+            .view-title {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                height: 60px;
+                width: 100%;
+                background: #EEECEF;
+                border-top: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                ul {
+                    width: 100%;
+                    border-left: 0;
+                    line-height: 60px;
+                    text-align: center;
+                    li {
+                        float: left;
+                        width: 25%;
+                        border-right: 1px solid #ccc;
+                        color: #333;
+                        line-height: 59px;
+                        height: 59px;
+                        font-size: 16px;
+                        cursor: pointer;
+                        position: relative;
+                        &.active {
+                            background: #fff;
+                            color: #523669;
+                            border-bottom: 1px solid #ccc;
+                        }
+                    }
+                }
+            }
+            .view-section {
+                width: 100%;
+                .view-supplier {
+                    float: left;
+                    width: 25%;
+                    border-right: 1px solid #ccc;
+                    .supplier-recommen {
+                        overflow: hidden;
+                        padding: 1px;
+                        li {
+                            padding: 20px 0;
+                            border-bottom: 1px solid #ccc;
+                            a {
+                                display: block;
+                                cursor: pointer;
+                                text-align: center;
+                                i {
+                                    display: block;
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                }
+                                .supplier {
+                                    font-size: 12px;
+                                    line-height: 17px;
+                                    color: #BF9E6B;
+                                    margin-top: 10px;
+                                }
+                                .title {
+                                    font-size: 14px;
+                                    line-height: 19px;
+                                    color: #4A4A4A;
+                                    margin-top: 5px;
+                                }
+                                .priceBox {
+                                    font-size: 16px;
+                                    line-height: 25px;
+                                    height: 25px;
+                                    color: #F7A701;
+                                    font-weight: 600;
+                                    margin-top: 10px;
+                                    span {
+                                        font-weight: normal;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .view-main {
+                    display: block;
+                    width: 75%;
+                    float: left;
+                    padding: 10px;
+                    .view-detail {
+                        display: block;
+                        width: 100%;
+                        .wrap {
+                            .imgText-property {
+                                margin: 0 auto 20px;
+                                dl {
+                                    line-height: 32px;
+                                    height: 32px;
+                                    border-bottom: 2px dotted #cecece;
+                                    font-size: 16px;
+                                    color: #333;
+                                    display: block;
+                                    overflow: hidden;
+                                    dt {
+                                        display: inline-block;
+                                        line-height: 32px;
+                                        width: 22%;
+                                        padding-left: 2%;
+                                        color: #666;
+                                        vertical-align: top;
+                                        float: left;
+                                    }
+                                    dd {
+                                        display: inline-block;
+                                        line-height: 32px;
+                                        width: 76%;
+                                        color: #333;
+                                        float: left;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                            .imgText-edit {
+                                padding-top: 10px;
+                                width: 100%;
+                                p {
+                                    text-align: center;
+                                    overflow: hidden;
+                                    img {
+                                        width: 100%;
+                                        &.biyaoImg {
+                                            width: 70%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .view-evaluate {
+                    display: none;
+                    .eval-select {
+                        overflow: hidden;
+                        padding-top: 10px;
+                        ul {
+                            float: left;
+                            padding-left: 15px;
+                            li {
+                                display: inline-block;
+                                font-size: 16px;
+                                color: #333;
+                                cursor: pointer;
+                                span {
+                                    display: inline-block;
+                                    width: 14px;
+                                    height: 14px;
+                                    margin-right: 10px;
+                                    background: url(http://static2.biyao.com/pc/common/img/master/eval-noSelect.png?v=biyao_d58cbe6) no-repeat;
+                                }
+                                &.active {
+                                    span {
+                                        background: url(http://static3.biyao.com/pc/common/img/master/eval-select.png?v=biyao_5be7e87) no-repeat;
+                                    }
+                                }
+                            }
+                        }
+                        p {
+                            text-align: center;
+                            font-size: 16px;
+                            color: #333;
+                            i {
+                                color: #f7b200;
+                                font-style: normal;
+                            }
+                        }
+                    }
+                    .eval-list {
+                        overflow: hidden;
+                        li {
+                            margin-top: 20px;
+                            border-top: 1px solid #eee;
+                            position: relative;
+                            .eval-user {
+                                float: left;
+                                margin: 20px 0 0 20px;
+                                dt {
+                                    img {
+                                        height: 40px;
+                                        width: 40px;
+                                        border-radius: 50%;
+                                        overflow: hidden;
+                                    }
+                                }
+                                dd {
+                                    text-align: center;
+                                    margin-top: 5px;
+                                    font-size: 12px;
+                                    color: #333;
+                                }
+                            }
+                            .eval-content {
+                                margin: 20px 0 0 100px;
+                                p {
+                                    font-size: 14px;
+                                    color: #4a4a4a;
+                                    line-height: 21px;
+                                    &.eval-artical {
+                                        margin-bottom: 10px;
+                                    }
+                                    &.eval-time span {
+                                        margin-right: 24px;
+                                        color: #bbb;
+                                        font-size: 12px;
+                                        line-height: 16px;
+                                    }
+                                }
+                                .eval-sup {
+                                    margin-top: 10px;
+                                    padding: 15px;
+                                    background: #F8F8F8;
+                                    font-size: 12px;
+                                    color: #4a4a4a;
+                                    display: flex;
+                                    dt {
+                                        font-size: 12px;
+                                        line-height: 16px;
+                                        color: #bbb;
+                                        min-width: 40px;
+                                    }
+                                    dd {
+                                        font-size: 12px;
+                                        color: #BF9E6B;
+                                    }
+                                }
+                                .eval-reply {
+                                    margin-top: 10px;
+                                    border-top: 1px solid #eee;
+                                    padding-top: 10px;
+                                    dt {
+                                        font-size: 12px;
+                                        color: #bbb;
+                                        line-height: 16px;
+                                    }
+                                    dd {
+                                        margin-top: 10px;
+                                        font-size: 12px;
+                                        color: #333;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .moreModule {
+                        text-align: center;
+                        span {
+                            width: 200px;
+                            height: 48px;
+                            margin: 20px auto 0;
+                            padding: 0 20px;
+                            border-radius: 2px;
+                            line-height: 48px;
+                            text-align: center;
+                            background: #ccc;
+                            color: #fff;
+                            font-size: 16px;
+                            cursor: pointer;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
