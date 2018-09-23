@@ -47,12 +47,58 @@ $nav-list:'http://static1.biyao.com/pc/common/img/master/nav-list.png?v=biyao_a5
     }
 }
 
-//轮播图及左侧导航
+//轮播图
+$left-Img:"http://static.biyao.com/pc/common/img/master/slider-left.png?v=biyao_0218904";
 .sidebar-carousel {
     margin: 10px auto 0;
     background: #ffffff;
+    #myCarousel {
+        height: 360px;
+        .carousel-control {
+            width: 6%;
+            display: none;
+            .glyphicon-chevron-left:before,
+            .glyphicon-chevron-right:before {
+                border-radius: 4px;
+                padding: 3px 4px;
+                background: rgba(0, 0, 0, 0.3);
+            }
+            &.right,
+            &.left {
+                //pointer-events: none;
+                background: none;
+            }
+        }
+        @media (min-width: 768px) {
+            .carousel-control.left {
+                margin-left: 207px;
+            }
+        }
+        .carousel-inner .item img {
+            height: 360px;
+            width: 100%;
+        }
+        .carousel-indicators {
+            padding-left: 207px;
+            z-index: 8;
+            li {
+                width: 13px;
+                height: 13px;
+                margin: 0 6px;
+                border: 2px solid #523669;
+            }
+            .active {
+                background: #f7b200;
+                border: 2px solid #f7b200;
+            }
+        }
+        @media (max-width: 768px) {
+            .carousel-indicators {
+                padding-left: 0px;
+            }
+        }
+    }
 }
-
 //中间部分
 .content {
     .threeImg {
@@ -78,7 +124,7 @@ $nav-list:'http://static1.biyao.com/pc/common/img/master/nav-list.png?v=biyao_a5
                 }
                 &:last-child {
                     margin: 0;
-                }
+                } 
             }
         }
     }
@@ -283,13 +329,13 @@ $nav-list:'http://static1.biyao.com/pc/common/img/master/nav-list.png?v=biyao_a5
             span {
                 font-size: 16px;
             }
-            dl{
-                dt{
+            dl {
+                dt {
                     font-size: 12px;
                 }
             }
         }
-        &.moreModule span{
+        &.moreModule span {
             font-size: 14px;
         }
     }

@@ -1,6 +1,5 @@
 require(['../../config/config'], function() {
-	require(['jquery', 'templates', 'bootstrap','commonAjax'], function($, templates) {
-		
+	require(['jquery', 'templates', 'bootstrap','commonAjax','checkForm','getCookie'], function($, templates) {		
 		//login
 		$('.account-title a').click(function(e) {
 			$(this).addClass('active').siblings().removeClass('active');
@@ -13,9 +12,6 @@ require(['../../config/config'], function() {
 				$('ul.smsLogin').css('display', 'block');
 			}
 		})
-		$('.account-header').load('/pages/templates/common/accountHeader.html', function() {
-			require(['checkForm']);
-			require(['getCookie']);
-		});
+		$('.account-header').load('/pages/templates/common/accountHeader.html');
 	})
 });

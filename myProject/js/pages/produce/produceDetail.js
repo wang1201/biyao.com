@@ -3,9 +3,9 @@ require(['../../config/config'], function() {
 		//由于必要网原网站更新迭代,源json无法找到详情信息
 		//因此请求别的网站的，别的网站请求详情需要商品id
 		//于是random几个人家有的
+		//		require(['commonAjax']);
 		var randomId = [979596, 3348, 942049, 4434, 1271, 2512, 595501, 952549, 982019, 975575, 962145, 971509, 982070, 982068, 982061, 979916, 1134, 2108, 6641];
 		var a = parseInt(randomId.length * Math.random());
-		console.log(a);
 		let ajax01 = $.ajax({
 			type: "get",
 			url: "https://api.sephora.cn/v1/product/sku/breadcrumb?productId=" + randomId[a],
@@ -19,23 +19,23 @@ require(['../../config/config'], function() {
 			url: "https://api.sephora.cn/v1/product/sku/optionalSkuSpec?productId=" + randomId[a] + "&skuId=&channel=PC&isPromotion=false",
 			success: function(data) {
 				info = data.results;
-				console.log(info);
 				var ranum = parseInt(info.skuSaleAttrs.length * Math.random());
 				skuId = info.skuSaleAttrs[ranum].skuId;
-				$.ajax({
-					type: "get",
-					async: false,
-					url: "https://api.sephora.cn/v1/product/sku/optionalSkuSpec?productId=" + randomId[a] + "&skuId=" + skuId + "&channel=PC&isPromotion=false",
-					success: function(d) {
-						detail = d.results;
-						console.log(detail);
-						sub = detail.currentSkuImagePath;
-						subUrl01 = detail.currentSkuImagePath.substring(0, sub.length - 10);
-						subUrl02 = detail.currentSkuImagePath.substring(sub.length - 9);
-					}
-				});
+
 			}
-		});
+		}).then(function() {
+			return $.ajax({
+				type: "get",
+				async: false,
+				url: "https://api.sephora.cn/v1/product/sku/optionalSkuSpec?productId=" + randomId[a] + "&skuId=" + skuId + "&channel=PC&isPromotion=false",
+				success: function(d) {
+					detail = d.results;
+					sub = detail.currentSkuImagePath;
+					subUrl01 = detail.currentSkuImagePath.substring(0, sub.length - 10);
+					subUrl02 = detail.currentSkuImagePath.substring(sub.length - 9);
+				}
+			});
+		})
 		let ajax03 = $.ajax({
 			type: "get",
 			url: "https://api.sephora.cn/v1/product/sku/skuPromotionInfo?channel=PC&productId=" + randomId[a],
@@ -43,21 +43,6 @@ require(['../../config/config'], function() {
 				gift = data.results.skuPromotionInfoDtoList;
 			}
 		});
-		//		let ajax04 = $.ajax({
-		//			type: "post",
-		//			url: "http://localhost:9091/proxy//api.sephora.cn/v1/product/product/skuDetailInfo",
-		//			data: {
-		//				queryBody: {
-		//					productId: "3348",
-		//					skuId: "214014",
-		//					channel: "PC"
-		//				}
-		//
-		//			},
-		//			success: function(data) {
-		//				console.log(data);
-		//			}
-		//		});
 
 		//由于下面这个路径，不晓得是根据什么推荐的猜你喜欢，不知道
 		//传的值一大堆数字是什么意义，没法根据当前去获取，于是创建一个MathRandom
@@ -79,78 +64,90 @@ require(['../../config/config'], function() {
 				leftId = data.features.RELATED_PC.items;
 			}
 		});
-
-		//		let ajax06 = $.ajax({
-		//			type: "get",
-		//			async: false,
-		//			url: "https://www.sephora.cn/api/SOA/Util/getProductDetails?op_id=3348",
-		//			jsonp: 'callback',
-		//			dataType: 'jsonp',
-		//			jsonpCallback: 'filHan',
-		//			crossDomain: true,
-		//			params: {
-		//				"contentType": "application/json;charset=utf-8"
-		//			},
-		//			success: function(data) {
-		//				console.log(data);
-		//			},
-		//			error: function(x, y, z) {
-		//				console.log(x, y, z);
-		//			}
-		//		});
-		//		let ajax07 = $.ajax({
-		//			type: "post",
-		//			url: "http://www.biyao.com/products/getComment",
-		//			data: {
-		//				productId: '1301405052',
-		//				haveImage: 0,
-		//				pageSize: 20,
-		//				pageIndex: 3
-		//			},
-		//			success: function(data) {
-		//				console.log(data);
-		//			},
-		//			error: function(x, y, z) {
-		//				console.log(x, y, z);
-		//			}
-		//		});
-		$.when(ajax01, ajax02, ajax03, ajax05).done(() => {
+		
+		
+		//评论接口，也是没有，找的淘宝的，那就随机几个吧
+		
+		let pllist, plScroce;
+		let dateTime = [];
+		let randomUrl2 = [
+			"https://rate.tmall.com/list_detail_rate.htm?itemId=562844114345&spuId=907962833&sellerId=2549841410&order=3&currentPage=1&append=0&content=1&tagId=&posi=&picture=&groupId=&ua=",
+			"https://rate.tmall.com/list_detail_rate.htm?itemId=571975606766&spuId=991535328&sellerId=3982196496&order=3&currentPage=1&append=0&content=1&tagId=&posi=&picture=&groupId=&ua=",
+			"https://rate.tmall.com/list_detail_rate.htm?itemId=522166911010&spuId=893417390&sellerId=2024237896&order=3&currentPage=1&append=0&content=1&tagId=&posi=&picture=&groupId=&ua=",
+			"https://rate.tmall.com/list_detail_rate.htm?itemId=37356144587&spuId=256610542&sellerId=725677994&order=3&currentPage=1&append=0&content=1&tagId=&posi=&picture=&ua="
+		]
+		let randomUrlPath = parseInt(randomUrl2.length * Math.random());
+		let ajax06 = $.ajax({
+			type: "get",
+			url: randomUrl2[randomUrlPath],
+			dataType: 'jsonp',
+			jsonp: 'callback',
+			jsonpCallback: 'jquery645',
+			success: function(data) {
+				pllist = data.rateDetail;
+				//评分
+				plScroce = parseInt(pllist.rateCount.picNum) / 100;
+				//评论时间
+				for(let i in pllist.rateList) {
+					let data = new Date(pllist.rateList[i].gmtCreateTime.time);
+					let month = Number(data.getMonth()) + 1;
+					dateTime.push(data.getFullYear() + '-' + month + '-' + data.getDate() + ' ' + data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds());
+				}
+			}
+		})
+		$.when(ajax01, ajax02, ajax03, ajax05,ajax06).done(() => {
+			
 			//所做操作
 			$('.produceInfo').load('/pages/templates/produce/produceDetail.html', function() {
+
 				let temp01 = templates('produceDetail', {
 					hierarchy: title,
 					produceInfo: info,
 					produceTel: detail,
 					gift: gift,
 					leftId: leftId,
-					leftProduce: leftProduce
+					leftProduce: leftProduce,
+					plScroce: plScroce,
+					rateList: pllist.rateList,
+					dateTime:dateTime,
 				})
 				$(this).html(temp01);
-				for(let i = 2; i < $('.mainImg').length; i++) {
-					$('.mainImg')[i].src = subUrl01 + i + subUrl02 + '50x50.jpg';
+
+				//图片详情：没有具体链接，拼接的链接
+				for(let i = 0; i < 4; i++) {
+					let li = document.createElement('li');
+					let img = document.createElement('img');
+					img.className = 'mainImg';
+					img.setAttribute('onerror', 'nofind($(this))')
+					img.src = subUrl01 + (i + 2) + subUrl02 + '50x50.jpg';
+					li.appendChild(img);
+					$('.proImg').append(li);
 				}
-				for(let i = 2; i < $('.biyaoImg').length; i++) {
-					let ImgSrc2 = subUrl01 + i + subUrl02 + '640x640.jpg';
+				for(let i = 0; i < $('.proImg').length; i++) {
+					$('.biyaoImg')[i].src = subUrl01 + (i + 2) + subUrl02 + '640x640.jpg';
 				}
+				//评价信息
 				$('#evaluate').on('click', function() {
 					$(this).addClass('active').siblings().removeClass('active')
 					$('.view-evaluate').show();
 					$('.view-detail').hide();
 				})
+				//商品详情
 				$('#detail').on('click', function() {
 					$(this).addClass('active').siblings().removeClass('active')
 					$('.view-evaluate').hide();
 					$('.view-detail').show();
 				})
+				//点击颜色变化
 				$('.mainList .size').on('click', function() {
 					$(this).addClass('activeStyle').siblings().removeClass('activeStyle');
 				})
-
+				//数量增加
 				$('.add').on('click', function() {
 					let inputHtml = $('.inputNum').val();
 					$('.inputNum').val(parseInt(inputHtml) + 1);
-					console.log(inputHtml);
 				});
+				//数量减少
 				$('.subtr').on('click', function() {
 					let inputHtml = $('.inputNum').val();
 					$('.inputNum').val(parseInt(inputHtml) - 1);
@@ -158,6 +155,7 @@ require(['../../config/config'], function() {
 						$('.inputNum').val('1')
 					}
 				});
+				//加入购物车
 				$('#addCart').on('click', function() {
 					let inputNum = $('.inputNum').val();
 					let Specification = $('.mainList').find('span').hasClass('activeStyle');
@@ -174,7 +172,7 @@ require(['../../config/config'], function() {
 						var obj = {
 							proId: info.productId, //产品id
 							proName: proName, //名字
-							proNameEN:proNameEN,
+							proNameEN: proNameEN,
 							proPrice: price.toFixed(2), //价格
 							proNum: inputNum, //数量
 							proSpecif: specife, //规格
@@ -184,11 +182,9 @@ require(['../../config/config'], function() {
 						}
 						var cookie = document.cookie;
 						if(cookie.indexOf('list') != -1) {
-							console.log(cookie.list);
 							let str = cookie.substr(cookie.indexOf('list='));
 							//JSON.parse():字符串转为对象
 							//JSO N.stringify():对象转为字符串
-							console.log(str);
 							list = JSON.parse(str.substring(5));
 						}
 						var Objindex = -1;
@@ -207,8 +203,6 @@ require(['../../config/config'], function() {
 						d.setDate(d.getDate() + 10);
 						list = JSON.stringify(list);
 						document.cookie = 'list=' + list + ';expires=' + d;
-						//console.log(document.cookie);
-						//location.href = url;
 						$('#addCart').attr('href', 'shopCart.html');
 					} else {
 						alert('请选择规格及数量');
@@ -216,20 +210,10 @@ require(['../../config/config'], function() {
 				});
 			})
 		});
-
+		//图片未找到路径时
 		window.nofind = function(that) {
-			that.parent().hide();
-			that.onerror = null;
-		}
-		window.checkImg = function(ImgSrc) {
-			var img = new Image();
-			img.src = ImgSrc;
-			if(img.readyState == 'complete') {
-				console.log("有图片且图片已加载完成");
-			} else {
-				console.log('没有图片!');
-				$(this).hide();
-			}
+			that.hide();
+			that.parent().remove();
 		}
 
 	})

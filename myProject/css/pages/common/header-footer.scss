@@ -6,7 +6,9 @@ $hover:#f7b200; //黄色
 
 
 /*nav*/
-
+em,i{
+    font-style: normal;
+}
 $shopCart-Img:'http://static.biyao.com/pc/common/img/master/shopCar.png?v=biyao_450e7fc';
 .container .header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .05);

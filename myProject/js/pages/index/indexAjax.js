@@ -1,8 +1,7 @@
 require(['../../config/config'], function() {
-	require(['jquery', 'templates', 'bootstrap','commonAjax'], function($, templates) {
+	require(['jquery', 'templates', 'indexFunction', 'bootstrap', 'commonAjax'], function($, templates, indexFun) {
 		//index
 		//热搜词
-//		require(['commonAjax']);
 		//侧边栏导航
 		$.ajax({
 			url: "/json/pages/index/jsonDataLeftBar.json",
@@ -27,7 +26,6 @@ require(['../../config/config'], function() {
 			success: function(data) {
 				//json的数据类型
 				var modules = data.data.modules;
-				console.log(modules);
 				var content = [];
 				for(let attr of modules) {
 					//轮播图下面的三个图片
@@ -84,7 +82,7 @@ require(['../../config/config'], function() {
 							'width': '7%',
 						}, 300).find('i').css('background', 'rgba(0,0,0,0.6)');
 					})
-					contentStyle();
+					indexFun.contentStyle();
 				});
 
 			}
@@ -101,13 +99,12 @@ require(['../../config/config'], function() {
 				for(let attr of modules) {
 					list.push(attr.moduleInfo)
 				}
-				console.log(list);
 				$('.contentTwo').load('/pages/templates/index/indexCategoryInfo.html', function() {
 					let htmlstr02 = templates('indexCategoryInfoTwo', {
 						contentData: list,
 					})
 					$(this).html(htmlstr02);
-					contentStyle();
+					indexFun.contentStyle();
 				});
 			}
 		});
@@ -136,82 +133,34 @@ require(['../../config/config'], function() {
 						DataTwo: infoTwo
 					})
 					$(this).html(htmlstr03);
-					window.contentStyle();
+					indexFun.contentStyle();
 				});
 			}
 		});
+		//		$('.sidebar-carousel .prosul').load('/pages/templates/common/commonLeftBar.html', function() {
+		//			let leftHtml = templates('leftBar', {
+		//
+		//			});
+		//			$(this).html(leftHtml);
+		//		});
 
-		$(function() {
-			//index
-			/*搜索框函数《----------*/
-			window.cb = function(data) {
-				droplist.innerHTML = '';
-				data.result.forEach((item) => {
-					var li = document.createElement('li');
-					li.innerText = item[0];
-					droplist.appendChild(li);
-
-				});
-				//点击下拉列表的值，自动显示在输入框上
-				droplist.style.display = 'block';
-				$('#droplist li').on('click', function() {
-					$('#serchInput').val($(this).text());
-					$(this).parent().hide();
-				})
-			}
-
-			//搜索框防抖
-			window.debounce = function(callback, delay, context) {
-				var timer = null;
-				return function(e) {
-					clearTimeout(timer);
-					timer = setTimeout(() => {
-						callback.call(context, e);
-					}, delay);
-				}
-			}
-			/*----------》搜索框函数*/
-
-			//中间部分模版图片高度一致
-			window.getHeight = function() {
-				let img02Height = $('.category-list').children().eq(1).find('img').outerHeight();
-				let h = img02Height + 'px';
-				$('.category-list .template').find('img').css('height', h);
-			}
-			//当图片大于4个的时候，显示margin
-			window.contentStyle = function() {
-				//当图片大于四个的时候给前四个图加margin-bottom
-				let clist = $('.category-list');
-				for(let i = 0; i < clist.length; i++) {
-					let liLength = clist.eq(i).find('li').length;
-					if(liLength > 4) {
-						for(let j = 0; j < 4; j++) {
-							clist.eq(i).find('li').eq(j).css('margin-bottom', '1%');
-						}
-
-					}
-				}
-				//高度一致
-				$(window).resize(function() {
-					getHeight()
-				});
-				getHeight();
-			}
-			//加载更多、换屏
-			$('.more').hover(function() {
-				$(this).fadeOut(500);
-				$(this).parent().next().fadeIn(500);
-				$('.lastmore').css('display', 'block').show();;
-			})
-			$('.lastmore').hover(function() {
-				$(this).fadeOut(500);
-				$(this).parent().next().fadeIn(500);
-			})
-			
-			//点击a标签跳到详情
-			$('.container a').attr('href','/pages/produceDetail.html');
-			
+		//高度一致
+		$(window).resize(function() {
+			indexFun.getHeight()
+		});
+		//加载更多、换屏
+		$('.more').hover(function() {
+			$(this).fadeOut(500);
+			$(this).parent().next().fadeIn(500);
+			$('.lastmore').css('display', 'block').show();;
 		})
+		$('.lastmore').hover(function() {
+			$(this).fadeOut(500);
+			$(this).parent().next().fadeIn(500);
+		})
+
+		//点击a标签跳到详情
+		$('.container a').attr('href', '/pages/produceDetail.html');
 
 	})
 })
