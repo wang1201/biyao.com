@@ -1,0 +1,206 @@
+<script id="produceDetail" type="text/html">
+	<div class="section-bread">
+		<a href="index.html">首页</a>
+		<span class="bread-title">&gt;&nbsp;{{hierarchy.firstName}}&gt;&nbsp;{{hierarchy.secondName}}&gt;&nbsp;{{hierarchy.thirdName}}&gt;&nbsp;{{hierarchy.brandName}}&gt;&nbsp;{{hierarchy.productNameCN}}</span>
+	</div>
+	<div class="section-editor clearfix row">
+		<div class="editor-main col-xs-6">
+			<div class="editor-picture clearfix">
+				<p>
+					<img src="{{produceInfo.currentSkuImagePath}}640x640.jpg">
+				</p>
+				<ul class="proImg">
+					<li class="main-active">
+						<%if(produceTel.currentSkuImagePath !=null){%>
+						<img src="{{produceTel.currentSkuImagePath}}50x50.jpg">
+						<%}%>
+
+					</li>
+					<!--<li><img class="mainImg" src="" onerror="nofind($(this));"></li>
+					<li><img class="mainImg" src="" onerror="nofind($(this));"></li>
+					<li><img class="mainImg" src="" onerror="nofind($(this));"></li>
+					<li><img class="mainImg" src="" onerror="nofind($(this));"></li>-->
+				</ul>
+			</div>
+			<ul class="editor-policy clearfix row">
+
+				<li>
+					<span>7天无忧退货</span>
+					<div><i></i>根据国家七天无理由退货规范，为您办理退货退款，具体退货政策见商品详情页。</div>
+				</li>
+
+				<li>
+					<span>先行赔付</span>
+					<div><i></i>争议可申诉，申诉成功，立即退款。</div>
+				</li>
+
+				<li>
+					<span>超时赔偿</span>
+					<div><i></i>未按承诺时间发货，系统自动赔付（赔款金额为订单商品金额的30%，上限500元）。</div>
+				</li>
+
+				<li>
+					<span>顺丰包邮</span>
+					<div><i></i>运费由商家承担</div>
+				</li>
+
+			</ul>
+		</div>
+		<div class="editor-panel sku col-xs-6">
+			<div class="panel-top">
+				<h1>{{produceInfo.productCN}}</h1>
+				<span>{{produceInfo.productEN}}</span>
+				<!--<p>轻薄透气吸湿 柔软不掉毛</p>-->
+
+				<span class="manufacturer">
+					<%for(let i = 0; i<produceInfo.tagsList.length;i++){%>
+						<%=produceInfo.tagsList[i].tagValue%>
+					<%}%>
+				</span>
+
+			</div>
+			<ul class="panel-main">
+				<li class="panel-press row">
+					<span class="col-xs-3 rowTitle">价格</span>
+					<div class="col-xs-9">
+						<span class="panel-maney">￥<i>{{produceTel.currentSkuOfferPrice}}</i></span>
+					</div>
+				</li>
+				<%for(let i = 0; i<gift.length;i++){%>
+				<li class="row">
+					<span class="col-xs-3 rowTitle">活动</span>
+					<div class="mainList col-xs-9">
+						<p><span class="type"><%=gift[i].tag%></span>
+							<%=gift[i].desc%>
+						</p>
+					</div>
+				</li>
+
+				<%}%>
+				<li class="row">
+					<span class="col-xs-3 rowTitle">规格</span>
+					<div class="mainList col-xs-9">
+						<span class="size activeStyle">200ml</span>
+						<span class="size">400ml</span>
+					</div>
+				</li>
+
+			</ul>
+			<div class="panel-footer">
+				<div class="input-group">
+					<span class="input-group-addon input-sm subtr">-</span>
+					<input type="text" class="form-control inputNum" value="1">
+					<span class="input-group-addon input-sm add">+</span>
+				</div>
+				<div class="addCartButton yes">
+					<a id="addCart">加入购物车<span class="icon glyphicon glyphicon-shopping-cart"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section-view">
+		<div class="view-title clearfix">
+			<ul class="clearfix">
+				<li>猜你喜欢</li>
+				<li class="view-active active" id="detail">商品信息<i></i></li>
+				<li id="evaluate">评价详情 <i></i></li>
+			</ul>
+		</div>
+		<div class="view-section clearfix">
+			<div class="view-supplier">
+				<ul class="supplier-recommen">
+					<%for(let i in leftId){%>
+					<li>
+						<a href='#' index='<%=leftProduce[(leftId[i].id)][0]%>'>
+							<i><img src="<%=leftProduce[(leftId[i].id)][10]%>"></i>
+							<div class="supplier">
+								<%=leftProduce[(leftId[i].id)][11]%>
+							</div>
+							<div class="title">
+								<%=leftProduce[(leftId[i].id)][1]%>
+							</div>
+							<div class="priceBox">
+								<span>￥</span>
+								<%=leftProduce[(leftId[i].id)][6]%>
+							</div>
+						</a>
+					</li>
+					<% } %>
+
+				</ul>
+
+			</div>
+			<div class="view-main clearfix">
+				<div class="view-detail">
+					<div class="wrap">
+						<div class="imgText-property">
+							<dl>
+								<dt>名称</dt>
+								<dd>
+									{{produceInfo.productCN}}
+								</dd>
+							</dl>
+							<dl>
+								<dt>英译</dt>
+								<dd>
+									{{produceInfo.productEN}}
+								</dd>
+							</dl>
+							<dl>
+								<dt>品牌</dt>
+								<dd>
+									{{produceInfo.brandCN}}
+								</dd>
+							</dl>
+							<dl>
+								<dt>英译</dt>
+								<dd>
+									{{produceInfo.brandEN}}
+
+								</dd>
+							</dl>
+						</div>
+						<div class="imgText-edit">
+							<p><img class="" src="{{produceTel.currentSkuImagePath}}640x640.jpg" onerror="nofind($(this));"></p>
+							<p><img class="biyaoImg" src="" onerror="nofind($(this));"></p>
+							<p><img class="biyaoImg" src="" onerror="nofind($(this));"></p>
+							<p><img class="biyaoImg" src="" onerror="nofind($(this));"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/96/rBACW1pO9dKAVL-UAACKBWV0EYg486.jpg" title="详情页尾部说明PC_01.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/96/rBACW1pO9dKAV_8sAADkCjKWqqs451.jpg" title="详情页尾部说明PC_02.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/90/rBACYVpO9dKAevYZAAGyi-w6kcE075.jpg" title="详情页尾部说明PC_03.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/26/DF/rBACVFpO9dKAN1G1AAAjxNlfqNs412.jpg" title="详情页尾部说明PC_04.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/26/DF/rBACVFpO9dKAGsXEAACrwf4yqqo997.jpg" title="详情页尾部说明PC_05.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/96/rBACW1pO9dKAa1h6AAC9MWxZeeE022.jpg" title="详情页尾部说明PC_06.jpg"></p>
+							<p><img src="http://bfs.biyao.com/group1/M00/28/90/rBACYVpO9dKACS7rAABz7KoqCwI646.jpg" title="详情页尾部说明PC_07.jpg"></p>
+						</div>
+					</div>
+				</div>
+				<div class="view-evaluate">
+					<div class="eval-select clearfix">
+						<p>商品满意度：<i id="evalScore">{{plScroce}}分</i></p>
+					</div>
+					<ul class="eval-list">
+						<%for(let i = 0; i<rateList.length;i++){%>
+						<li>
+							<dl class="eval-user"><dt><img src="{{rateList[i].pics[0]}}" onerror="src='/img/pages/header-footer/appLogo.png'"></dt>
+								<dd>{{rateList[i].displayUserNick}}</dd>
+							</dl>
+							<div class="eval-content">
+								<p class="eval-artical">{{rateList[i].rateContent}}</p>
+								<p class="eval-time"><span>{{dateTime[i]}}&nbsp;&nbsp;</span><span>{{rateList[i].auctionSku}}</span></p>
+								<%if(rateList[i].reply!=""){%>
+									<dl class="eval-sup"><dt>[ 商家回复 ]</dt>
+									<dd>{{rateList[i].reply}}</dd>
+								</dl>
+								<%}%>
+							</div>
+						</li>
+						<%}%>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</script>

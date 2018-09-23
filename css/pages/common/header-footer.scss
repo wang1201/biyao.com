@@ -1,0 +1,495 @@
+$hover:#f7b200; //黄色
+.container {
+    padding: 0;
+    width: 100%;
+}
+
+
+/*nav*/
+em,i{
+    font-style: normal;
+}
+$shopCart-Img:'http://static.biyao.com/pc/common/img/master/shopCar.png?v=biyao_450e7fc';
+.container .header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
+    .navbar-default {
+        width: 100%;
+        /*height: 30px;*/
+        line-height: 30px;
+        background: #333;
+        min-height: 30px;
+        margin-bottom: 0px;
+        border: none;
+        border-radius: 0;
+        .navbar-nav>li>a {
+            color: #ccc;
+            height: 30px;
+            &:focus,
+            &:hover {
+                color: #FFFFFF;
+            }
+        }
+        .navbar-brand {
+            height: 30px;
+            font-size: 12px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            color: #ccc;
+            &:focus,
+            &:hover {
+                color: #FFFFFF;
+            }
+        }
+        .container-fluid {
+            padding-right: 0;
+            .collapse .navbar-nav>li>a {
+                font-size: 12px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-left: 11px;
+                padding-right: 11px;
+            }
+            .navbar-toggle {
+                padding: 4px 5px;
+                margin-top: 4px;
+                margin-right: 15px;
+                margin-bottom: 0px;
+                .icon-bar {
+                    display: block;
+                    width: 18px;
+                    height: 1px;
+                    border-radius: 1px;
+                }
+            }
+            .nav-header {
+                .nav-massage {
+                    .glyphicon {
+                        top: 0px;
+                    }
+                    .glyphicon-envelope:before {
+                        font-size: 15px;
+                        padding-right: 10px;
+                        content: "\2709";
+                        display: inline-block;
+                        height: 17px;
+                        vertical-align: middle;
+                    }
+                    span.nav-num {
+                        margin-left: 10px;
+                    }
+                }
+                .shoppingCart {
+                    &:hover {
+                        background: #523669;
+                    }
+                    a {
+                        font-size: 12px;
+                        background: #523669 url($shopCart-Img) no-repeat 12px 6px;
+                        span.cart {
+                            padding-left: 25px;
+                        }
+                    }
+                }
+                li.noLine:before {
+                    width: 0;
+                }
+                li:before {
+                    content: '';
+                    position: absolute;
+                    top: 9px;
+                    left: 0;
+                    bottom: 9px;
+                    width: 1px;
+                    background: #FFFFFF;
+                }
+            }
+            .navbar-collapse {
+                width: 100%;
+            }
+        }
+    }
+}
+
+//nav鼠标移入出现的
+$cart-Img:'http://static3.biyao.com/pc/common/img/master/triangle.png?v=biyao_5912cd0';
+$dt-Img:'http://static.biyao.com/pc/common/img/master/appLogo.png?v=biyao_00b8f39';
+$p-Img:'http://static1.biyao.com/pc/common/img/master/app.png?v=biyao_41bce2f';
+.navCommonHover {
+    div {
+        position: absolute;
+        top: 25px;
+        left: -22px;
+        z-index: 115;
+        display: none;
+    }
+    &:hover div {
+        display: block;
+    }
+    i {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 30px;
+        height: 15px;
+        margin: 0 auto;
+        background: url($cart-Img) no-repeat;
+        background-size: 100% 100%;
+    }
+    dl {
+        padding: 15px 10px 10px;
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 0 1px 10px 4px rgba(0, 0, 0, .05);
+    }
+    dt {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+        background: url($dt-Img) no-repeat;
+    }
+    dd {
+        margin-top: 10px;
+        line-height: 24px;
+        font-size: 12px;
+        color: #523669;
+        text-align: center;
+    }
+    p {
+        width: 130px;
+        height: 130px;
+        margin: 10px auto 0;
+        background: url($p-Img) no-repeat;
+        background-size: 100% 100%;
+    }
+}
+
+//nav-客户服务
+$down-Img:'http://static4.biyao.com/pc/common/img/master/comSprite.png?v=biyao_d192a16';
+$up-Img:'http://static4.biyao.com/pc/common/img/master/comSprite.png?v=biyao_d192a16';
+.personService {
+    div {
+        left: -7px;
+        a {
+            font-size: 16px;
+            color: #333;
+            &:hover {
+                color: #CCCCCC;
+            }
+        }
+    }
+    &:hover a span {
+        background: url($up-Img) 0 -87px no-repeat;
+    }
+    a span {
+        display: inline-block;
+        width: 9px;
+        height: 4px;
+        margin-left: 10px;
+        background: url($down-Img) 0 -102px no-repeat;
+        vertical-align: middle;
+    }
+}
+
+//logo及搜索框
+$logo-Img:'/img/pages/index/logo.png';
+$serch-Img:'http://static.biyao.com/pc/common/img/master/search.png?v=biyao_2e92562';
+.container .header .row {
+    background: #FFFFFF;
+    height: 105px;
+    .nav-logo {
+        height: 98px;
+        background: url($logo-Img) 0 center no-repeat;
+    }
+    .nav-serch {
+        .bs-example {
+            padding-top: 30px;
+            .input-group {
+                .form-control {
+                    height: 38px;
+                    &:focus {
+                        box-shadow: none;
+                        border-color: #CCCCCC;
+                    }
+                }
+                .input-group-addon {
+                    padding: 6px 0;
+                    span {
+                        display: inline-block;
+                        width: 40px;
+                        height: 24px;
+                        vertical-align: middle;
+                        background: url($serch-Img) center center no-repeat;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .droplist {
+            position: absolute;
+            top: 67px;
+            list-style: none;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            background: #FFFFFF;
+            border-radius: 3px;
+            display: none;
+            z-index: 10;
+            margin-right: 15px;
+            li {
+                float: left;
+                height: 25px;
+                width: 100%;
+                line-height: 25px;
+                font-size: 14px;
+                padding-left: 10px;
+                &:hover {
+                    cursor: pointer;
+                    background: #eee;
+                }
+            }
+        }
+        .hot-words {
+            width: 100%;
+            height: 30px;
+            overflow: hidden;
+            li {
+                float: left;
+                height: 30px;
+                padding: 0;
+                margin-right: 20px;
+                line-height: 30px;
+                a {
+                    color: gray;
+                    cursor: pointer;
+                    &:hover {
+                        color: $hover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//底部footer
+$wxCode-triangle:'http://static3.biyao.com/pc/common/img/master/left-triangle.png?v=biyao_42e3a81';
+$wxCode-img:'http://static.biyao.com/pc/common/img/master/wxCode.jpg?v=biyao_79ba7c9';
+.common-footer {
+    margin-top: 60px;
+    background: #FFFFFF;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    .footer-server {
+        width: 100%;
+        border-bottom: 1px solid #CCCCCC;
+        ul {
+            width: 96%;
+            margin: auto;
+            overflow: hidden;
+            li {
+                float: left;
+                overflow: hidden;
+                width: 25%;
+                padding: 12px 0;
+                .server-make {
+                    width: 40%;
+                    float: left;
+                    vertical-align: middle;
+                    text-align: center;
+                    img {
+                        width: 85%;
+                    }
+                }
+                .server-text {
+                    width: 60%;
+                    float: left;
+                    padding: 13% 0;
+                    font-size: 16px;
+                    color: #333333;
+                    text-align: center;
+                    vertical-align: middle;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+    .footer-main {
+        overflow: hidden;
+        margin-top: 30px;
+        .footer-detail {
+            width: 96%;
+            margin: auto;
+            overflow: hidden;
+            .detail-info {
+                float: left;
+                width: 25%;
+                text-align: center;
+                h2 {
+                    font-size: 16px;
+                    color: #333;
+                    font-weight: 400;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+                ul {
+                    margin-top: 30px;
+                    li {
+                        margin-bottom: 10px;
+                        a {
+                            font-size: 12px;
+                            color: gray;
+                            &:hover {
+                                color: #523669;
+                            }
+                        }
+                        &.footer-wxCode {
+                            position: relative;
+                            div {
+                                position: absolute;
+                                top: -46px;
+                                left: 62px;
+                                display: none;
+                                border-radius: 4px;
+                                box-shadow: 0 1px 10px 4px rgba(0, 0, 0, .05);
+                                i {
+                                    position: absolute;
+                                    top: 40px;
+                                    left: -15px;
+                                    display: block;
+                                    width: 15px;
+                                    height: 30px;
+                                    background: url($wxCode-triangle) no-repeat;
+                                    background-size: 100% 100%;
+                                }
+                                span {
+                                    display: block;
+                                    width: 114px;
+                                    height: 114px;
+                                    background: url($wxCode-img) center center no-repeat;
+                                    background-size: 100% 100%;
+                                }
+                            }
+                            &:hover {
+                                div {
+                                    display: block;
+                                }
+                            }
+                        }
+                        p {
+                            img {
+                                width: 50%;
+                                height: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .footer-info {
+        margin-top: 60px;
+        p {
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 10px;
+            color: gray;
+            span {
+                display: inline-block;
+                padding-right: 1%;
+                vertical-align: middle;
+                a {
+                    color: gray;
+                }
+                img {
+                    width: 15px;
+                }
+            }
+        }
+    }
+}
+
+//超小屏幕时 头部样式
+@media (max-width: 768px) {
+    .container .navbar-default .container-fluid {
+        .nav-header li:before {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+        .navbar-header {
+            margin-right: 0px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        .navbar-collapse {
+            border-top: 0;
+        }
+    }
+    .footer {
+        .footer-server ul li .server-text {
+            font-size: 14px;
+        }
+        .footer-main .footer-detail .detail-info h2 {
+            font-size: 14px;
+        }
+    }
+}
+
+.display {
+    display: none;
+    height: 50px;
+    width: 100%;
+    background: #FFFFFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 0;
+    z-index: 999;
+    .leftBar {
+        dl {
+            display: inline-block;
+            h2 {
+                font-size: 17px;
+                vertical-align: middle;
+                line-height: 50px;
+                display: inline;
+            }
+            .dispalyProsul {
+                display: none;
+                z-index: 999;
+                left: 0;
+            }
+        }
+    }
+    .rightBar {
+        line-height: 50px;
+        input {
+            width: 100%;
+            line-height: 32px;
+            height: 32px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #555;
+            padding: 0 10px;
+            &:focus {
+                outline: none;
+            }
+        }
+        .rightDroplist {
+            display: none;
+            background: #FFFFFF;
+            margin-top: -8px;
+            box-shadow: 1px 0 15px 5px rgba(0, 0, 0, .05);
+            li {
+                line-height: 28px;
+                padding: 0 10px;
+                &:hover {
+                    cursor: pointer;
+                    background: #eee;
+                }
+            }
+        }
+    }
+}
